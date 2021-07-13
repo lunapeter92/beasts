@@ -1,13 +1,31 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import '../horned-beast.css';
 
 class HornedBeasts extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            timesClicked: 0
+        }
+
+    }
+
+    favoritedImage = () => {
+        this.setState({timesClicked: this.state.timesClicked + 1})
+    }
+
     render(){
         return(
-            <div className="horned-beast">
-                <h2>{this.props.title}</h2>
-                <img src={this.props.imageUrl}></img>
-                <p>{this.props.description}</p>
-            </div>
+            <Card style={{width: '18rem'}} className="card">
+                <Card.Img variant="top" src={this.props.imageUrl} width="100%" />
+                <Card.Body>
+                    <Card.Title className="card-title">{this.props.title}</Card.Title>
+                    <Card.Text>{this.props.description}</Card.Text>
+                    <Button variant="primary" onClick={this.favoritedImage}>Like: {this.state.timesClicked}</Button>
+                </Card.Body>
+            </Card>
         )
     }
 }
