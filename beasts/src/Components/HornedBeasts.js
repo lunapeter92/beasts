@@ -12,6 +12,10 @@ class HornedBeasts extends React.Component {
 
     }
 
+    selectBeast = () => {
+        this.props.selectBeast(this.props.title, this.props.description)
+    }
+
     favoritedImage = () => {
         this.setState({timesClicked: this.state.timesClicked + 1})
     }
@@ -19,7 +23,7 @@ class HornedBeasts extends React.Component {
     render(){
         return(
             <Card style={{width: '18rem'}} className="card">
-                <Card.Img variant="top" src={this.props.imageUrl} width="100%" />
+                <Card.Img variant="top" onClick={this.selectBeast}  src={this.props.imageUrl} width="100%" />
                 <Card.Body>
                     <Card.Title className="card-title">{this.props.title}</Card.Title>
                     <Card.Text>{this.props.description}</Card.Text>
